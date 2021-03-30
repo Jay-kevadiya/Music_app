@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-import { MainCategoryReducer, CategoryReducer } from './reducer';
+import { MainCategoryReducer} from './reducer';
 
 export default combineReducers({
-    MainCategoryReducer,
-    CategoryReducer
+    MainCategoryReducer
 })

@@ -5,23 +5,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CategoryAction } from '../../contexts/actions/action';
 
 export default SubCategory = (props) => {
-    const { data } = props.route.params;
-    const catData = useSelector(state => state.CategoryReducer);
+    const { homeData } = props.route.params;
+    const catData = useSelector(state => state.MainCategoryReducer);
     const categoryRecord = catData.Category.data || [];
-
-
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(CategoryAction(data.id))
+        dispatch(CategoryAction(homeData.id))
     }, [])
 
     const renderMusicCategory = ({ item }) => {
         return (
             <View style={styles.mainWrapper} >
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => props.navigation.navigate('MusicScreen', {SubData: item})}>
                     <View style={styles.itemWrapper}>
-                        <Image style={{height:50, width:50}} source={{uri: 'http://lyricalvideostatus.stickerapp.in/' + item.icon}} />
+                        <Image style={{height:70, width:70}} source={{uri: 'http://lyricalvideostatus.stickerapp.in/' + item.icon}} />
                         <Text style={[styles.items, { color: item.color_code }]}>{item.name}</Text>
                     </View>
                 </TouchableOpacity>
@@ -35,7 +33,7 @@ export default SubCategory = (props) => {
                 <TouchableOpacity onPress={() => props.navigation.pop()}>
                     <Icons name="chevron-back-outline" size={30} />
                 </TouchableOpacity>
-                <Text style={styles.textStyle}>{data.name}</Text>
+                <Text style={styles.textStyle}>{homeData.name}</Text>
             </View>
 
             
@@ -44,7 +42,7 @@ export default SubCategory = (props) => {
                     keyExtractor={item => item.id}
                     renderItem={renderMusicCategory}
                     //    horizontal
-                    numColumns={2}
+                    numColumns={3}
                     showsVerticalScrollIndicator={false}
                 />
            
@@ -71,16 +69,17 @@ const styles = StyleSheet.create({
     },
     mainWrapper: {
         // backgroundColor:'red',
-        width: '50%'
+        width: '30%'
     },
     itemWrapper: {
         backgroundColor: 'white',
-        padding: 30,
+        padding: 15,
         margin: 20,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 10
+        borderRadius: 10,
+        width:'95%'
     },
     items: {
         fontSize: 17,

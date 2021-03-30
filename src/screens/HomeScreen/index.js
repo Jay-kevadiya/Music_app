@@ -19,7 +19,7 @@ export default HomeScreen = (props) => {
     const renderMusicType = ({ item }) => {
         return (
             <View style={styles.mainWrapper} >
-                <TouchableOpacity onPress={() => props.navigation.navigate('SubCategory', {data: item})}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('SubCategory', {homeData: item})}>
                     <View style={styles.itemWrapper}>
                         <Text style={styles.items}>{item.name}</Text>
                     </View>

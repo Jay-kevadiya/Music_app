@@ -1,9 +1,10 @@
-import { CATEGORY, MAIN_CETEGORY } from "../../constants/actionsTypes";
+import { CATEGORY, MAIN_CETEGORY, MUSIC } from "../../constants/actionsTypes";
 
 
 const initialStates = {
     MaincategoryData: [],
     Category: [],
+    Music: [],
 
 }
 
@@ -14,23 +15,23 @@ export function MainCategoryReducer(state = initialStates, action) {
                 ...state,
                 MaincategoryData: action.payload
             }
+            break;
+        case CATEGORY:
+            return {
+                ...state,
+                Category: action.payload,
 
+            }
+            break;
+        case MUSIC:
+            return {
+                ...state,
+                Music: action.payload,
 
+            }
 
         default:
             return state;
     }
 }
 
-export function CategoryReducer(state = initialStates, action) {
-    switch (action.type) {
-        case CATEGORY:
-            return {
-                ...state,
-                Category: action.payload
-            }
-
-            default:
-                return state;
-    }
-}
