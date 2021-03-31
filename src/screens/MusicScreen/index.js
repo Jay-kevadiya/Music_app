@@ -14,9 +14,10 @@ export default MusicScreen = (props) => {
 
     const main1 =  musicData.mainCatId.id;
     const subcat = musicData.subCatId.id;
+    const subcatname = musicData.subCatId.name;
 
     useEffect(() => {
-        dispatch(MusicAction(main1, subcat))
+        dispatch(MusicAction(main1, subcat, subcatname))
     }, []);
 
 

@@ -24,7 +24,7 @@ export default SubCategory = (props) => {
             <View style={styles.mainWrapper} >
                 <TouchableOpacity onPress={() => onpresssubcat(item)}>
                     <View style={styles.itemWrapper}>
-                        <Image style={{height:70, width:70}} source={{uri: 'http://lyricalvideostatus.stickerapp.in/' + item.icon}} />
+                        <Image style={{ height: 70, width: 70 }} source={{ uri: 'http://lyricalvideostatus.stickerapp.in/' + item.icon }} />
                         <Text style={[styles.items, { color: item.color_code }]}>{item.name}</Text>
                     </View>
                 </TouchableOpacity>
@@ -41,16 +41,16 @@ export default SubCategory = (props) => {
                 <Text style={styles.textStyle}>{catData.mainCatId.name}</Text>
             </View>
 
-            
-                <FlatList
-                    data={categoryRecord}
-                    keyExtractor={item => item.id}
-                    renderItem={renderMusicCategory}
-                    //    horizontal
-                    numColumns={3}
-                    showsVerticalScrollIndicator={false}
-                />
-           
+
+            <FlatList
+                data={categoryRecord}
+                keyExtractor={item => item.id}
+                renderItem={renderMusicCategory}
+                //    horizontal
+                numColumns={3}
+                showsVerticalScrollIndicator={false}
+            />
+
         </View>
     )
 };
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        width:'95%'
+        width: '95%'
     },
     items: {
         fontSize: 17,
-        marginTop:20
+        marginTop: 20
 
     },
 });
