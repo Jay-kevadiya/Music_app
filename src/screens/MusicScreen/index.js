@@ -12,7 +12,7 @@ export default MusicScreen = (props) => {
 
     const mdata = musicData.Music.data || [];
 
-    const main1 =  musicData.mainCatId.id;
+    const main1 = musicData.mainCatId.id;
     const subcat = musicData.subCatId.id;
     const subcatname = musicData.subCatId.name;
 

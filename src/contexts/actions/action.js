@@ -8,7 +8,7 @@ export const MainCategoryAction = () => async (dispatch) => {
     // console.log('response', response.data);
     dispatch({
         type: MAIN_CETEGORY,
-        payload: response.data, 
+        payload: response.data,
     })
 };
 
@@ -25,7 +25,7 @@ export const CategoryAction = (id) => async (dispatch) => {
 export const MusicAction = (main1, subcat, subcatname) => async (dispatch) => {
     // console.log()
     let subcatid = subcat;
-    if(subcatname == 'All'){
+    if (subcatname == 'All') {
         subcatid = 0
     }
     const param = {
@@ -33,8 +33,6 @@ export const MusicAction = (main1, subcat, subcatname) => async (dispatch) => {
         sub_category_id: subcatid
 
     }
-
-    console.log('param',param)
     const response = await Axios.post('http://lyricalvideostatus.stickerapp.in/Get_Data', param)
         .catch((e) => console.log(e));
     // console.log('Music =>>', response.data)
@@ -48,14 +46,14 @@ export const MusicAction = (main1, subcat, subcatname) => async (dispatch) => {
 export const MainCatAction = (item) => async (dispatch) => {
     dispatch({
         type: MAINCAT,
-        payload: item, 
+        payload: item,
     })
 };
 
 export const SubCatAction = (item) => async (dispatch) => {
     dispatch({
         type: SUBCAT,
-        payload: item, 
+        payload: item,
     })
 };
 
