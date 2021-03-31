@@ -1,10 +1,13 @@
-import { CATEGORY, MAIN_CETEGORY, MUSIC } from "../../constants/actionsTypes";
+import { CAT, CATEGORY, MAINCAT, MAIN_CETEGORY, MUSIC, SUBCAT } from "../../constants/actionsTypes";
 
 
 const initialStates = {
     MaincategoryData: [],
     Category: [],
     Music: [],
+    mainCatId:'',
+    catId:'',
+    subCatId:'',
 
 }
 
@@ -27,6 +30,30 @@ export function MainCategoryReducer(state = initialStates, action) {
             return {
                 ...state,
                 Music: action.payload,
+
+            }
+
+            // break;
+            // case CAT:
+            // return {
+            //     ...state,
+            //     catId: action.payload,
+
+            // }
+
+            break;
+            case SUBCAT:
+            return {
+                ...state,
+                subCatId: action.payload,
+
+            }
+
+            break;
+            case MAINCAT:
+            return {
+                ...state,
+                mainCatId: action.payload,
 
             }
 

@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { CATEGORY, CAT_ID, MAIN_CETEGORY, MUSIC } from '../../constants/actionsTypes';
+import { CAT, CATEGORY, CAT_ID, MAINCAT, MAIN_CETEGORY, MUSIC, SUBCAT } from '../../constants/actionsTypes';
 
 export const MainCategoryAction = () => async (dispatch) => {
 
@@ -8,7 +8,7 @@ export const MainCategoryAction = () => async (dispatch) => {
     // console.log('response', response.data);
     dispatch({
         type: MAIN_CETEGORY,
-        payload: response.data,
+        payload: response.data, 
     })
 };
 
@@ -22,11 +22,11 @@ export const CategoryAction = (id) => async (dispatch) => {
 
 };
 
-export const MusicAction = () => async (dispatch) => {
+export const MusicAction = (main1, subcat) => async (dispatch) => {
     // console.log()
     const param = {
-        category_id: 8,
-        sub_category_id: 0
+        category_id: main1,
+        sub_category_id: subcat
     }
     const response = await Axios.post('http://lyricalvideostatus.stickerapp.in/Get_Data', param)
         .catch((e) => console.log(e));
@@ -36,3 +36,25 @@ export const MusicAction = () => async (dispatch) => {
         payload: response.data,
     })
 };
+
+
+export const MainCatAction = (item) => async (dispatch) => {
+    dispatch({
+        type: MAINCAT,
+        payload: item, 
+    })
+};
+
+export const SubCatAction = (item) => async (dispatch) => {
+    dispatch({
+        type: SUBCAT,
+        payload: item, 
+    })
+};
+
+// export const CatAction = () => async (dispatch) => {
+//     dispatch({
+//         type: CAT,
+//         payload: , 
+//     })
+// };

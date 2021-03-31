@@ -2,22 +2,27 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
-import { CategoryAction } from '../../contexts/actions/action';
+import { CategoryAction, SubCatAction } from '../../contexts/actions/action';
 
 export default SubCategory = (props) => {
-    const { homeData } = props.route.params;
     const catData = useSelector(state => state.MainCategoryReducer);
     const categoryRecord = catData.Category.data || [];
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        dispatch(CategoryAction(homeData.id))
+        dispatch(CategoryAction(catData.mainCatId.id))
     }, [])
+
+    const onpresssubcat = (item) => {
+        dispatch(SubCatAction(item));
+        props.navigation.navigate('MusicScreen')
+    };
 
     const renderMusicCategory = ({ item }) => {
         return (
             <View style={styles.mainWrapper} >
-                <TouchableOpacity onPress={() => props.navigation.navigate('MusicScreen', {SubData: item})}>
+                <TouchableOpacity onPress={() => onpresssubcat(item)}>
                     <View style={styles.itemWrapper}>
                         <Image style={{height:70, width:70}} source={{uri: 'http://lyricalvideostatus.stickerapp.in/' + item.icon}} />
                         <Text style={[styles.items, { color: item.color_code }]}>{item.name}</Text>
@@ -33,7 +38,7 @@ export default SubCategory = (props) => {
                 <TouchableOpacity onPress={() => props.navigation.pop()}>
                     <Icons name="chevron-back-outline" size={30} />
                 </TouchableOpacity>
-                <Text style={styles.textStyle}>{homeData.name}</Text>
+                <Text style={styles.textStyle}>{catData.mainCatId.name}</Text>
             </View>
 
             
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
     textStyle: {
         color: '#000',
         fontSize: 20,
-        marginLeft: 100
+        marginLeft: 130
     },
     mainWrapper: {
         // backgroundColor:'red',

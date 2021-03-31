@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { MainCategoryAction } from '../../contexts/actions/action';
+import { MainCategoryAction, MainCatAction } from '../../contexts/actions/action';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -15,11 +15,16 @@ export default HomeScreen = (props) => {
         dispatch(MainCategoryAction())
     }, []);
 
+    const onpressmaincat =(item) => {
+        dispatch(MainCatAction(item))
+        props.navigation.navigate('SubCategory')
+    };
+
 
     const renderMusicType = ({ item }) => {
         return (
             <View style={styles.mainWrapper} >
-                <TouchableOpacity onPress={() => props.navigation.navigate('SubCategory', {homeData: item})}>
+                <TouchableOpacity onPress={() => onpressmaincat(item)}>
                     <View style={styles.itemWrapper}>
                         <Text style={styles.items}>{item.name}</Text>
                     </View>
