@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,6 +6,8 @@ import { MusicAction } from '../../contexts/actions/action';
 
 
 export default MusicScreen = (props) => {
+
+    const [click, setClick] = useState(false);
 
     const musicData = useSelector(state => state.MainCategoryReducer);
     const dispatch = useDispatch();
@@ -29,6 +31,7 @@ export default MusicScreen = (props) => {
     }
 
 
+
     const renderMusic = ({ item }) => {
         return (
             <TouchableOpacity>
@@ -45,6 +48,7 @@ export default MusicScreen = (props) => {
             </TouchableOpacity>
         )
     };
+
     return (
         <View style={styles.container}>
 
@@ -64,6 +68,27 @@ export default MusicScreen = (props) => {
                 keyExtractor={item => item.id}
                 renderItem={renderMusic}
             />
+
+            <View style={styles.bottomWrapper}>
+                <View style={styles.bottomLeft}>
+                    <Image style={{ height: 50, width: 50 }} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDjKioy0Kcxs_HGSajnBUT6zRR17v8dHfrPw&usqp=CAU' }} />
+                    <View style={styles.nameStyle}>
+                        <Text style={{ fontSize: 18, marginLeft: 15 }}>Demo name</Text>
+                    </View>
+                </View>
+
+                <View style={styles.bottomRight}>
+                    <TouchableOpacity onPress={() => setClick(true)}>
+                        {click ? 
+                            <Image style={{ height: 40, width: 40 }} source={require('../../assets/images/play-button.png')} />
+                            :
+                            <Image style={{ height: 40, width: 40 }} source={require('../../assets/images/pause.png')} />    
+                    }
+
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         </View>
     )
 };
@@ -115,5 +140,22 @@ const styles = StyleSheet.create({
     },
     textData2: {
         marginTop: 10
+    },
+    bottomWrapper: {
+        backgroundColor: '#fff',
+        padding: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    bottomLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    bottomRight: {
+
+    },
+    nameStyle: {
+
     }
 });

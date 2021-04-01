@@ -14,8 +14,8 @@ export default AppNavigation = () => {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerTitleAlign: 'center', }}>
                 <Stack.Screen name={HOME_SCREEN} component={HomeScreen} />
-                <Stack.Screen name={SUB_CATEGORY} component={SubCategory} options={{headerShown:false}} />
-                <Stack.Screen name={MUSIC} component={MusicScreen}  options={{headerShown:false}}/>
+                <Stack.Screen name={SUB_CATEGORY} component={SubCategory} options={{ headerShown: false }} />
+                <Stack.Screen name={MUSIC} component={MusicScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
